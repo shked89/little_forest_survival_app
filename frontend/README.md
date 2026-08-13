@@ -1,5 +1,73 @@
-# Vue 3 + Vite
+# Little Forest Survival
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A small real-time survival game with both singleplayer and multiplayer modes, built with Vue, PixiJS, and a clean game core architecture.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Built with **Vue 3 + Vite + PixiJS**.
+
+## Project Structure
+
+The frontend is split into three simple layers:
+
+1. Game layer - core game logic
+2. Presentation layer - game world visualization
+3. Interface layer - application UI
+
+```text
+src/
+├── game/
+├── interface/
+├── presentation/
+└── ...
+```
+
+## Architecture
+
+```text
+game         = what happens
+presentation = how the game world is presented
+interface    = how the user interacts with the application
+```
+
+### `game/`
+
+Core game logic.
+
+Contains:
+
+- game state
+- world/grid logic
+- core entities
+- movement
+- interactions
+- game rules
+
+This layer should not depend on the interface layer or the presentation layer.
+
+### `presentation/`
+
+Game visualization layer based on PixiJS.
+
+Contains:
+
+- renderer
+- camera
+- sprites
+- layers
+- animations
+- input handling
+- world-to-screen projection
+
+This layer displays the current game state but does not contain game rules.
+
+### `interface/`
+
+Vue application interface.
+
+Contains:
+
+- menus
+- screens
+- HUD (Heads-Up Display)
+- inventory
+- settings
+- dialogs

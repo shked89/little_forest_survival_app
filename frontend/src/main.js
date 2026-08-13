@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './assets/main.css'
-import App from './App.vue'
+import './app/assets/main.css'
+import App from './app/App.vue'
 
 createApp(App).mount('#app')
