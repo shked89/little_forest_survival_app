@@ -1,6 +1,11 @@
 <script setup>
+import ButtonUi from '@/interface/ui/ButtonUi.vue';
+
 </script>
 
 <template>
-  test
+  <ButtonUi
+    text="button"
+    variant="primary"
+  />
 </template>

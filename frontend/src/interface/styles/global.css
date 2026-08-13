@@ -1,0 +1,7 @@
+:root {
+  --button-color: #d8c98f;
+  --button-border-color: #1f2a22;
+}
+
+@media (prefers-color-scheme: dark) {
+}
