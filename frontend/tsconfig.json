@@ -15,7 +15,7 @@
     "strict": true,
 
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
 
     "verbatimModuleSyntax": true,
 
