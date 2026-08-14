@@ -11,7 +11,7 @@
   display: grid;
   width: 100%;
   min-height: 100%;
-  padding: 24px;
+  padding: 24px 12px;
   place-items: center;
 }
 
@@ -22,5 +22,9 @@
   gap: 20px;
   width: min(100%, 480px);
   text-align: center;
+  height: 100%;
+  justify-content: space-between;
+
+  max-height: 560px;
 }
 </style>

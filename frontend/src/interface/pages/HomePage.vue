@@ -16,9 +16,13 @@ const { goToRoute } = useNavigation()
       aria-label="Main menu"
     >
       <ButtonUi
-        text="Play"
+        text="Singleplayer"
         variant="primary"
         @click="goToRoute('game')"
+      />
+      <ButtonUi
+        text="Multiplayer"
+        disabled
       />
       <ButtonUi
         text="About"
