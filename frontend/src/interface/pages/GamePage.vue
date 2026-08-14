@@ -2,8 +2,11 @@
 import ScreenWrapper from '@/interface/layout/ScreenWrapper.vue'
 import ButtonUi from '@/interface/ui/ButtonUi.vue'
 import { useNavigation } from '@/interface/composables/useNavigation.js'
+import { useGameSession } from '@/interface/composables/useGameSession'
 
 const { goToRoute } = useNavigation()
+
+const session = useGameSession()
 </script>
 
 <template>

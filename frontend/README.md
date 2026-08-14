@@ -71,3 +71,19 @@ Contains:
 - inventory
 - settings
 - dialogs
+
+## Game Session Lifecycle
+
+The game page does not create or destroy the game core directly. Session ownership
+is separated from the Vue interface through the following flow:
+
+```text
+GamePage.vue <- useGameSession <- GameSession <- GameCore
+```
+
+`useGameSession` connects `GameSession` to the app lifecycle:
+
+- starts the session when the page is mounted
+- destroys the session before the page is unmounted
+
+This keeps `GameCore` independent of rendering libraries, allowing the game to use PixiJS, Three.js, or native HTML/DOM rendering. `GameCore` can also be moved to a Web Worker if its workload becomes too demanding for the main thread, with DrawBus handling communication between threads.
