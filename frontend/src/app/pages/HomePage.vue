@@ -1,8 +1,8 @@
 <script setup>
-import ScreenWrapper from '@/interface/layout/ScreenWrapper.vue'
-import LineWrapper from '@/interface/layout/LineWrapper.vue'
-import ButtonUi from '@/interface/ui/ButtonUi.vue'
-import { useNavigation } from '@/interface/composables/useNavigation.js'
+import ScreenWrapper from '@/app/layout/ScreenWrapper.vue'
+import LineWrapper from '@/app/layout/LineWrapper.vue'
+import ButtonUi from '@/app/ui/ButtonUi.vue'
+import { useNavigation } from '@/app/composables/useNavigation.js'
 
 const { goToRoute } = useNavigation()
 </script>

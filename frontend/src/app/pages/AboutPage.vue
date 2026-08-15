@@ -1,11 +1,11 @@
 <script setup>
-import ScreenWrapper from '@/interface/layout/ScreenWrapper.vue'
-import ButtonUi from '@/interface/ui/ButtonUi.vue'
-import { useNavigation } from '@/interface/composables/useNavigation.js'
-import TextUi from '@/interface/ui/TextUi.vue';
-import LinkUi from '@/interface/ui/LinkUi.vue';
-import LineWrapper from '@/interface/layout/LineWrapper.vue';
-import IconUi from '@/interface/ui/IconUi.vue';
+import ScreenWrapper from '@/app/layout/ScreenWrapper.vue'
+import ButtonUi from '@/app/ui/ButtonUi.vue'
+import { useNavigation } from '@/app/composables/useNavigation.js'
+import TextUi from '@/app/ui/TextUi.vue';
+import LinkUi from '@/app/ui/LinkUi.vue';
+import LineWrapper from '@/app/layout/LineWrapper.vue';
+import IconUi from '@/app/ui/IconUi.vue';
 
 const { goToRoute } = useNavigation()
 </script>

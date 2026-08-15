@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
-import ButtonUi from '@/interface/ui/ButtonUi.vue'
-import { useNavigation } from '@/interface/composables/useNavigation'
+import ButtonUi from '@/app/ui/ButtonUi.vue'
+import { useNavigation } from '@/app/composables/useNavigation'
 import {
   createGameView,
   type GameViewI,
