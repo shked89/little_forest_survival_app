@@ -1,20 +1,63 @@
-<script setup>
-import ScreenWrapper from '@/interface/layout/ScreenWrapper.vue'
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import ButtonUi from '@/interface/ui/ButtonUi.vue'
-import { useNavigation } from '@/interface/composables/useNavigation.js'
-import { useGameSession } from '@/interface/composables/useGameSession'
+import { useNavigation } from '@/interface/composables/useNavigation'
+import {
+  createGameView,
+  type GameViewI,
+} from '@/presentation/createGameView'
 
 const { goToRoute } = useNavigation()
 
-const session = useGameSession()
+const gameContainerRef = ref<HTMLDivElement | null>(null)
+let gameView: GameViewI | null = null
+
+onMounted(async () => {
+  const container = gameContainerRef.value
+
+  if (!container)
+    throw new Error('Game container is not mounted')
+
+  gameView = createGameView('pixi')
+
+  await gameView.init({
+    container,
+  })
+})
+
+onBeforeUnmount(() => {
+  gameView?.destroy()
+  gameView = null
+})
 </script>
 
 <template>
-  <ScreenWrapper>
-    <h1>Game</h1>
-    <ButtonUi
-      text="Back to menu"
-      @click="goToRoute('home')"
-    />
-  </ScreenWrapper>
+  <ButtonUi
+    text="X"
+    class="button-exit"
+    variant="transparent"
+    @click="goToRoute('home')"
+  />
+  <div
+    ref="gameContainerRef"
+    class="game-canvas"
+  />
 </template>
+
+<style scoped>
+.button-exit {
+  position: absolute;
+  right: 0;
+  margin: 10px;
+}
+
+.game-canvas {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game-canvas :deep(canvas) {
+  display: block;
+}
+</style>

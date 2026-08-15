@@ -1,21 +1,16 @@
-<script setup>
-defineProps({
-  text: {
-    type: [String, Number],
-    default: '',
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  type: {
-    type: /** @type {import('vue').PropType<'button' | 'submit' | 'reset'>} */ (String),
-    default: 'button',
-  },
-  variant: {
-    type: String,
-    default: 'default',
-  },
+<script setup lang="ts">
+interface Props {
+  text?: string | number | null
+  disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  variant?: 'default' | 'primary' | 'transparent' | 'danger'
+}
+
+withDefaults(defineProps<Props>(), {
+  text: '',
+  disabled: false,
+  type: 'button',
+  variant: 'default',
 })
 </script>
 
@@ -54,11 +49,6 @@ defineProps({
   transition: all 40ms ease;
 }
 
-
-.button-ui:hover:not(:disabled) {
-  background: #e6d79d;
-}
-
 .button-ui:active:not(:disabled) {
   transform: translateY(2px);
   box-shadow: 0 0 0 var(--button-border-color);
@@ -82,6 +72,13 @@ defineProps({
 
 .button-ui--primary:hover:not(:disabled) {
   background: #a2ca82;
+}
+
+.button-ui--transparent {
+  background: #8888885d;
+
+  border: 1px solid #646464b2;
+  box-shadow: 0 1px 0 #646464b2;
 }
 
 .button-ui--danger {
