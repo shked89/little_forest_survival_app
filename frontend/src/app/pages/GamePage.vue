@@ -18,7 +18,7 @@ onMounted(async () => {
   if (!container)
     throw new Error('Game container is not mounted')
 
-  gameView = createGameView('pixi')
+  gameView = createGameView('pixi_simple')
 
   await gameView.init({
     container,

@@ -1,10 +1,10 @@
 import { Application, Graphics } from 'pixi.js'
 
-export class ViewPixi {
+export class ViewPixiSimple {
   app = null
 
   async init({ container }) {
-    if (!container) throw new Error('ViewPixi: container is required')
+    if (!container) throw new Error('ViewPixiSimple: container is required')
 
     this.app = new Application()
 

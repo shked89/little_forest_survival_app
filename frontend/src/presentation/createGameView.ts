@@ -1,4 +1,4 @@
-import { ViewPixi } from '@/presentation/views/ViewPixi'
+import { ViewPixiSimple } from '@/presentation/pixiSimple/ViewPixiSimple'
 
 export interface GameViewI {
   init(options: { container: HTMLElement }): Promise<void>
@@ -8,7 +8,8 @@ export interface GameViewI {
 type GameViewFactory = () => GameViewI
 
 const createViewByRenderer = {
-  pixi: () => new ViewPixi(),
+  pixi_simple: () => new ViewPixiSimple(),
+  // pixi_isometry: () => new ViewPixiIsometry(),
   // three: () => new ViewThree(),
 } as const satisfies Record<string, GameViewFactory>
 

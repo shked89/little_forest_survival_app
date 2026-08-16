@@ -1,0 +1,7 @@
+export const PIXI_SIMPLE_CONFIG = {
+  BACKGROUND: 0x888888,
+  MAX_RESOLUTION: 2,
+
+  TILE_SIZE: 36,
+  UNIT_SIZE: 24,
+} as const
