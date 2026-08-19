@@ -1,7 +1,10 @@
+import type { PointType } from '@/app/types'
 import { ViewPixiSimple } from '@/presentation/pixiSimple/ViewPixiSimple'
 
 export interface GameViewI {
   init(options: { container: HTMLElement }): Promise<void>
+  moveCameraTo(x: number, y: number): void
+  getCurrentCameraPosition(): PointType
   destroy(): void
 }
 

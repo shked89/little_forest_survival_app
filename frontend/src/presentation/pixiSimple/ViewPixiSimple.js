@@ -26,6 +26,14 @@ export class ViewPixiSimple {
     this.app.stage.addChild(this.terrainLayer)
   }
 
+  moveCameraTo(x, y) {
+    this.terrainLayer.moveTo(x, y)
+  }
+
+  getCurrentCameraPosition() {
+    return this.terrainLayer.getCameraPosition()
+  }
+
   handleResize = () => this.terrainLayer.resize()
 
   destroy() {

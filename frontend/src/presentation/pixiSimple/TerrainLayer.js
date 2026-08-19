@@ -157,6 +157,13 @@ export class TerrainLayer extends Container {
     this.#visibleTileLabelCount = visibleCount
   }
 
+  getCameraPosition() {
+    return {
+      x: this.#camera.x,
+      y: this.#camera.y,
+    }
+  }
+
   destroy() {
     this.#tileLabelPool.length = 0
     super.destroy({ children: true })
