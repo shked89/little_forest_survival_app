@@ -1,7 +1,10 @@
-import { Application, Graphics } from 'pixi.js'
+import { Application } from 'pixi.js'
+import { PIXI_SIMPLE_CONFIG } from '@/presentation/pixiSimple/pixi_simple_config'
+import { TerrainLayer } from '@/presentation/pixiSimple/TerrainLayer'
 
 export class ViewPixiSimple {
   app = null
+  terrainLayer = null
 
   async init({ container }) {
     if (!container) throw new Error('ViewPixiSimple: container is required')
@@ -10,23 +13,28 @@ export class ViewPixiSimple {
 
     await this.app.init({
       resizeTo: container,
-      backgroundColor: 0x10d98b,
+      backgroundColor: PIXI_SIMPLE_CONFIG.TERRAIN_COLORS[0],
       antialias: true,
-      resolution: window.devicePixelRatio,
+      resolution: Math.min(window.devicePixelRatio, PIXI_SIMPLE_CONFIG.MAX_RESOLUTION),
       autoDensity: true,
     })
 
     container.appendChild(this.app.canvas)
-    const square = new Graphics().rect(0, 0, 100, 100).fill(0xffff00)
-    square.position.set(Math.random() * 200, Math.random() * 200)
 
-    this.app.stage.addChild(square)
+    this.terrainLayer = new TerrainLayer(this.app.screen)
+    this.app.renderer.on('resize', this.handleResize)
+    this.app.stage.addChild(this.terrainLayer)
   }
 
-  destroy() {
-    if (!this.app) return console.warn('ViewPixi: app does not exist on destroy')
+  handleResize = () => this.terrainLayer.resize()
 
+  destroy() {
+    if (!this.app) return
+
+    this.app.renderer.off('resize', this.handleResize)
     this.app.destroy({ removeView: true }, { children: true })
+
+    this.terrainLayer = null
     this.app = null
   }
 }
